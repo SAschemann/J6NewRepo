@@ -24,15 +24,15 @@ public enum Tracks {
         this.filePath = filePath;
     }
     
-    public int getNumber(){
+    public int getNumber(){ //finds track number
         return this.number;
     }
     
-    public String getDescription() {
+    public String getDescription() { //finds track description
         return this.description;
     }
 
-    public String getFilePath() {
+    public String getFilePath() { //finds filepath for song or sound effect
         return this.filePath;
     }
     
