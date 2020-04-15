@@ -43,7 +43,7 @@ public class AudioPlayer{
     
     /**
      * Set the track to be played based file path stored in the soundTracks Enum
-     * If a trak number is given does not exist in the enum the track will be
+     * If a track number is given does not exist in the enum the track will be
      * set to the first track in the enum
      * @param trackNum -  the track to be played
      */
@@ -68,7 +68,7 @@ public class AudioPlayer{
     
     /**
      * Get the track path of the currently loaded track
-     * @return track -  current track's file path
+     * @return track -  current tracks file path
      */
     public String getTrackPath(){
         return this.track;
@@ -114,7 +114,7 @@ public class AudioPlayer{
     } 
 
     /**
-     * Stops the currently playing clip and records the clip's position
+     * Stops the currently playing clip and records the clips position
      */ 
     public void pause(){ 
         
