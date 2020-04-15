@@ -27,18 +27,7 @@ public class UserPlayerTest {
     public static void tearDownClass() {
     }
 
-    /**
-     * Test of setHP method, of class UserPlayer.
-     */
-    @Test
-    public void testSetHP() {
-        System.out.println("setHP");
-        int health = 0;
-        UserPlayer instance = new UserPlayer();
-        instance.setHP(health);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+
 
     /**
      * Test of damageUpdateHP method, of class UserPlayer.
@@ -46,11 +35,13 @@ public class UserPlayerTest {
     @Test
     public void testDamageUpdateHP() {
         System.out.println("damageUpdateHP");
-        int damage = 0;
+        int health = 100;
+        int damage = 10;
+        int expectedResult = 90;
         UserPlayer instance = new UserPlayer();
+        instance.setHP(health);
         instance.damageUpdateHP(damage);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expectedResult,instance.getCurHP());
     }
 
     /**
@@ -59,11 +50,13 @@ public class UserPlayerTest {
     @Test
     public void testHealsUpdateHP() {
         System.out.println("healsUpdateHP");
-        int heals = 0;
+        int heals = 10;
+        int damage = 15;
+        int expectedResult = 95;
         UserPlayer instance = new UserPlayer();
+        instance.damageUpdateHP(damage);
         instance.healsUpdateHP(heals);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expectedResult,instance.getCurHP());
     }
 
     /**
@@ -72,11 +65,11 @@ public class UserPlayerTest {
     @Test
     public void testUpdateInventory() {
         System.out.println("updateInventory");
-        String item = "";
+        String item = "iron bar";
+        int expectedResult = 1;
         UserPlayer instance = new UserPlayer();
         instance.updateInventory(item);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.invSize(),expectedResult);
     }
 
     /**
@@ -85,40 +78,13 @@ public class UserPlayerTest {
     @Test
     public void testUpdateWeapon() {
         System.out.println("updateWeapon");
-        String weapon = "";
+        String weapon = "sword";
+        String expectedResult = "sword";
         UserPlayer instance = new UserPlayer();
         instance.updateWeapon(weapon);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getCurWeapon(),expectedResult);
     }
 
-    /**
-     * Test of getCurWeapon method, of class UserPlayer.
-     */
-    @Test
-    public void testGetCurWeapon() {
-        System.out.println("getCurWeapon");
-        UserPlayer instance = new UserPlayer();
-        String expResult = "";
-        String result = instance.getCurWeapon();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCurHP method, of class UserPlayer.
-     */
-    @Test
-    public void testGetCurHP() {
-        System.out.println("getCurHP");
-        UserPlayer instance = new UserPlayer();
-        int expResult = 0;
-        int result = instance.getCurHP();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of equipPipBoy method, of class UserPlayer.
@@ -128,8 +94,7 @@ public class UserPlayerTest {
         System.out.println("equipPipBoy");
         UserPlayer instance = new UserPlayer();
         instance.equipPipBoy();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(instance.inquirePipBoy());
     }
 
     /**
@@ -138,52 +103,12 @@ public class UserPlayerTest {
     @Test
     public void testUpdatePosition() {
         System.out.println("updatePosition");
-        String place = "";
+        String place = "kitchen";
+        String expectedResult = "kitchen";
         UserPlayer instance = new UserPlayer();
         instance.updatePosition(place);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getPlayerPosition(),expectedResult);
     }
 
-    /**
-     * Test of getPlayerPosition method, of class UserPlayer.
-     */
-    @Test
-    public void testGetPlayerPosition() {
-        System.out.println("getPlayerPosition");
-        UserPlayer instance = new UserPlayer();
-        String expResult = "";
-        String result = instance.getPlayerPosition();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of inquirePipBoy method, of class UserPlayer.
-     */
-    @Test
-    public void testInquirePipBoy() {
-        System.out.println("inquirePipBoy");
-        UserPlayer instance = new UserPlayer();
-        boolean expResult = false;
-        boolean result = instance.inquirePipBoy();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPip method, of class UserPlayer.
-     */
-    @Test
-    public void testSetPip() {
-        System.out.println("setPip");
-        boolean boy = false;
-        UserPlayer instance = new UserPlayer();
-        instance.setPip(boy);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
     
 }

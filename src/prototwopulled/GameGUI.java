@@ -64,7 +64,7 @@ public class GameGUI extends javax.swing.JFrame {
             
             
             //This SOP statement prints to the console to check for the player position            
-            System.out.println("Before switch statement + " + internalPlayer.getPlayerPosition() + internalPlayer.inquirePipBoy());
+            //System.out.println("Before switch statement + " + internalPlayer.getPlayerPosition() + internalPlayer.inquirePipBoy());
             
             //switch statement that sets prompt and options after the user chooses to load a save, runs off internalplayer object which is 
             //the loaded player object from the sessionhandler.load() method
@@ -73,7 +73,7 @@ public class GameGUI extends javax.swing.JFrame {
                 //each room will need a case, but that's not so bad for a save and load feature. 
                 case "firstDeadEnd":
                     //this sop statement checks to make sure we're getting inside the switch statement
-                    System.out.println("Inside switch statement");
+                    //System.out.println("Inside switch statement");
                     //this method call sets the prompt and option for the firstDeadEndRoom
                     vLogic.firstDeadEndRoom();
                 break;

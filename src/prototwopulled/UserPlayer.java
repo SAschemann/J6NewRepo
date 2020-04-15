@@ -30,7 +30,7 @@ public class UserPlayer {
     public void healsUpdateHP(int heals){
         if((hp + heals) < 100)
             hp = hp + heals;
-        if((hp + heals) > 100)
+        else if((hp + heals) > 100)
             hp = 100;
     }
     
@@ -71,6 +71,10 @@ public class UserPlayer {
     
     public void setPip(boolean boy){
         hasPipBoy = boy;
+    }
+    
+    public int invSize(){
+        return inventory.length;
     }
     
     //this comment is only a gitTest
