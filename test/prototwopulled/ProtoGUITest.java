@@ -26,11 +26,11 @@ public class ProtoGUITest {
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConstructor(){
+        ProtoGUI testOn = new ProtoGUI();
+        assertTrue(testOn instanceof ProtoGUI);
     }
     
 }
