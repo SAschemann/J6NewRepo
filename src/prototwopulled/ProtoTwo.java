@@ -25,6 +25,8 @@ public class ProtoTwo {
       
         ProtoGUI newGUI = new ProtoGUI();
         newGUI.setVisible(true);
+        bgm.setTrack(0);
+        bgm.play();
     }
 //testing not being able to push comment     
 }
