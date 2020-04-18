@@ -36,7 +36,7 @@ public class GameGUI extends javax.swing.JFrame {
             //declare a vaultrooms object to call the starting method on
             VaultRooms vRooms = new VaultRooms();
             //this method call using the vRooms object created here sets the prompt and options for the first "room" at the start of the game.
-            vRooms.start();
+            vRooms.intro();
     }
     
     //Load game constructor, same as new game constructor but loads game functionality
@@ -95,6 +95,10 @@ public class GameGUI extends javax.swing.JFrame {
                     vLogic.inspectDeadBodyHasPipBoy();
                 break;
                 
+                case "introTwo":
+                    vLogic.introTwo();
+                break;
+                
                 case "startCont":
                     vLogic.startCont();
                 break;
@@ -107,8 +111,8 @@ public class GameGUI extends javax.swing.JFrame {
                     vLogic.bunkhouse();
                 break;
                 
-                case "showerRoom":
-                    vLogic.showerRoom();
+                case "waterRoom":
+                    vLogic.waterRoom();
                 break;
                 
                 case "firstTerminalPartTwo":
@@ -129,6 +133,10 @@ public class GameGUI extends javax.swing.JFrame {
                 
                 case "arcingWires":
                     vLogic.arcingWires();
+                break;
+                
+                case "firstLockedDoor":
+                    vLogic.firstLockedDoor();
                 break;
 
             }//end of loading switch statement
@@ -328,7 +336,7 @@ public class GameGUI extends javax.swing.JFrame {
     
     //Use this method to set the prompts for concluding to view text on a computer terminal. Should be called only after contComputerTerm() is called.
     public void contComputerTermConclude(){
-        jButton1.setText(">");
+        jButton1.setText("Exit Terminal");
     }
     
     public void setTwoOptions(String Op1, String Op2){
@@ -418,75 +426,107 @@ public class GameGUI extends javax.swing.JFrame {
         
         //This is an example of what a room method would look like. It contains method calls to the game screen class's methods that set the prompt and 
         //options text. These options are able to be called on the game screen class because this is a nested class.
-        public void start(){
-            setPrompt("You slowly wake up and begin to look around. You're unsure of where you are, and as your vision clears, you take stock of what's around you." + 
-                    " There is a computer terminal in the corner, a dead body on the floor, and two doors. One door leads to a hallway, " +
-                    "and another door appears to lead to a dead end. You notice a stripe on your left arm near the wrist paler than the rest of your skin, as if some item is "+
-                    "missing.");
+        public void intro(){
+            setPrompt("!!!.........'aghhh'.....................'oof'...............\n" +
+                    "......................'ugh'................................. \n" +
+                    "\n" +
+                    "You feel nothing... Nothing but searing white-hot pain... It radiates through your skull and down your spine. You find yourself sitting down with your "+
+                    "back to the wall. Your joints ache and your wrist feels tight. The well lit room does you no favors for your headache. 'Get it together....!' you almost gasp "+
+                    "when you realize you can't remember your name! Who are you? What are you doing here?!"
+                    );
             
-            setAllOptions("Go out the door", "Inspect dead end", "Inspect terminal", "Inspect body");
+            setOneOption("What the hell is happening???");
+        }
+        
+        public void introTwo(){
+            setPrompt("You look around and notice some immediate things other than the rusty equipment and lab materials strewn about. Specifically, a dead body lying on a table.........\n"+
+                    "You begin to hyper-ventilate... Breathe... The second of clarity made you realize you remember this room! The hybrid Lab-Workshop... Why did you know that?"+
+                    " The Vault... The Vault... You're in the Vault. A subterannean metal home, safe from the irradiated outside world. You can remember all that but not your name??? "+
+                    "Breathe... You'll have to keep your wits to survive and escape... The Vault");
+            
+            setOneOption("Inspect the room further");
         }
         
         public void startCont(){
-            setPrompt("There is a computer terminal in the corner, a dead body on the floor, and two doors. One door leads to a hallway, " +
-                    "and another door appears to lead to a dead end. You notice a stripe on your left arm near the wrist paler than the rest of your skin, as if some item is "+
-                    "missing.");
+            setPrompt("Your eyes adjust to the harsh tubes of fluorescent lights and notice a few more things. The hybrid workshop was split in half. One side with greasy tools, parts, and "+
+                    "doodads. The other beakers, scopes, and other various fragile items. At least you still recognized all these things. The body on the table you did not recognize though... "+
+                    "You couldnt decide if the stench was from him or the room in general. A computer terminal glowed on an adjacent desk from the body, text on the screen. On one wall lied a large"+
+                    "metallic door. An archway gave way to a darkened back room to your left.  ");
             
-            setAllOptions("Go out the door", "Inspect dead end", "Inspect terminal", "Inspect body");
+            setAllOptions("Open the metallic door", "Walk through the archway", "Inspect terminal", "Inspect body");
         }
-        public void firstHallway(){
-            setPrompt("You enter the hallway off the room you woke up in. The door to that room is behind you. The hallway is deserted and red emergency" +
-                    " lights running along the ceiling illuminate it. There are two doors on the wall opposite you, and a door at the end of the hallway." +
-                    " The doors opposite you are labeled 'bunkhouse' and 'shower/fitness room' respectively.");
+        
+        public void firstLockedDoor(){
+            setPrompt("You wander over to the large metallic door, fastened with nickel-plated rivets and screws. In the center of the door lies a small, rectangular, crude monitor. "+
+                    "You walk in front of the monitor and the green suddenly turns to red and a negative sounding tone emits from the monitor 'BRRZT'.... The door doesn't open");
             
-            setAllOptions("Go back", "Take door at end of the hallway", "Enter bunkhouse", "Enter shower/fitness room");
+            setOneOption("Go back");
+        }
+
+        public void firstHallway(){
+            setPrompt("The PipBoy's haptic feedback vibrates, seemingly with the door as it rushes open. You dart outside and notice a yellow label 'BF' in the corner. This must be "+
+                    "the basement floor. You're in a hallway illuminated in red Emergency lights. Behind you is the Lab/Workshop. At the end of this hallway a staircase leading upwards. "+
+                    "On the opposite wall two doors lie next to each other. Cloudy plexiglass allows you to see shadows and shapes in the next rooms. A metallic placard on each door read Air-Water "+
+                    "Filtration Room, and Bunkhousing.");
+            setAllOptions("Back into Lab/Workshop Room", "Approach staircase", "Enter Bunkhouse", "Enter Air-Water Filtration Room");
         }
         
         public void firstDeadEndRoom(){
-            setPrompt("You enter the adjacent room. The general back alley ambiance of this room is so rotten, so incredibly foul. "
-                    + "How long had you been lying outside this room? Who was responsible for the political propaganda plastering every wall?" + 
-                    " What could possibly be made of these black and white photos strewn about, all copies of the same blurry photo, what you figure to be lights in the night sky." +
-                    " 'Death to the Observer' is spray painted on the ceiling. You tip over a pyramid of empty liquor bottles, and they clatter to the ground.");
+            setPrompt("You compose yourself and walk under the archway into the back room. Beakers and glassware lined one side of the wall while gears lined the other." +
+                    " The room was dark besides a single shaft of light coming from a vent flush with the ceiling. The light rhythmically flickered inside the vent behind a loud fan. Every "+
+                    "time the fan turned you could hear a light thump. The stench in this room... it was thick and foul. You felt queesy with a dreaded sense of deja-vu as you felt like somewhere"+
+                    "deep inside you knew what was inside that vent. The dreaded feeling makes you step back into the previous room ");
             
-            setOneOption("Go back to the previous room");
+            setOneOption("Go back to the main room of the lab-workshop");
         }
         
         public void firstTerminalPartOne(){
-            setPrompt("The terminal is currently displaying messages from the observer. 'The Interloper,' he writes, 'Has caused nothing but trouble since their arrival." 
-            + " They are too rowdy and speak nonsense about lights in the sky. And that dreaded cat they brought with them got loose in the ventilation system. I wish"
-            + " we could return to the way things were before their arrival.' You click to read the next message.");
+            setPrompt("DATE- 6-17-3012 \n"+
+                    "Porter Cassius :-LOG-: We found a friend inside the Air/Water filter in the Water Room. Poor little guy was an inch from death and almost fell in the tank. "+
+                    "Had to use a jackquarter to get him out so I think I'll call him Jack :) Gerald says the cat gives him the creeps.\n"+
+                    "DATE- 6-19-3012 \n"+
+                    ":-LOG-: Observer Mathew tried to kill Jack! Said everything from the outside was impure and had to go! I got him out of there and now hes staying with me in the Water Room. Poor guy");
             
             contComputerTerm();
         }
         
         public void firstTerminalPartTwo(){
-            setPrompt("'The Interloper has now begun spreading their dreadful idealogy and the other residents are beginning to wonder about the lights in their blurry photo." 
-            + " In addition, that dreadful cat is still missing in the ventilation sytstem despite our efforts to locate it. I fear a showdown between they and myself is inevitable.'");
+            setPrompt("DATE- 6-24-3012. \n"+
+                    ":-LOG-: Gerald say 2 get rid of Jackky cuz Im 'different' uhhh idk maybe but I like him n i like waterrrrrrrrrrrrrrrrrdzxf2\n\n"+
+                    "DATE 6-29-3012\n"+
+                    ":-LOG-: MEE-owWw MeoWWW mEEoW M:EOW. is what Jack say to me. jackie good boy. everyone love that boY :) Jack speak 2 me"+
+                    "Jackie like the waTer too22222dffa22 can Jack swim??");
             
             contComputerTermConclude();
         }
         
         public void inspectDeadBody(){
-            setPrompt("This dead body appears to be in a vault jumpsuit three sizes too big. Cause of death isn't apparent, but you're not a doctor, so don't feel bad. " +
-                    "A pipboy is on the body's wrist.");
+            setPrompt("The body is cold and you look at the face to see if you recognize it but you don't. His eyes are bulged out a bit and his skin was pale. Although you don't recognize " +
+                    "the face, a feeling in your stomach tells you somehow you know this man in some way. You don't want to stick around at all but you notice his vault suit had a Pipboy clinched"+   
+                    " around his wrist. You remembered PipBoys were assigned to every Vault Dweller. They were a state of the art tool that held your vitals and had lots of useful functions."+
+                    " The PipBoy  around the man's wrist had an inscription that read 'Porter Cassius'..");
+            
             setTwoOptions("Take the Pipboy!", "Don't take the Pipboy.");
         }
         
         public void inspectDeadBodyHasPipBoy(){
-            setPrompt("This dead body appears to be in a vault jumpsuit three sizes too big. Cause of death isn't apparent, but you're not a doctor, so don't feel bad.");
+            setPrompt("Checking back on the body reveals little else. The face was still unfamiliar. He wore the standard blue/yellow VaultDweller jumpsuit we all wore. Not fashionable"+
+                    " but the best we could in our nuclear post-apocalypse situtation so who could complain. The PipBoy I grabbed around his wrist "+
+                    "read 'Porter Cassius'. You hope he had a quick painless death at the very least as you feel you knew him in some way. You take a moment of silence staring at him in the harsh+"+
+                    " light before turning around.");
             setOneOption("Enough morbid consideration");
         }
         
         public void endOfHallDoor(){
-            setPrompt("Before you is a staircase leading up. Just isnide this door there is a room marked 'Maintenance Closet' on your left. Behind you is "
-            + "the hallway you just came from.");
-            setThreeOptions("Go back", "Maintenance Closet", "Go Upstairs");
+            setPrompt("Before you is a staircase leading up. You hear ominous noises filtering in and out from upstairs and you're not exactly sure what"+
+                    " they are. Your hand grips the rail and you look towards the stairs...");
+            setTwoOptions("Go back", "Go Upstairs");
         }
         
         public void bunkhouse(){
             setPrompt("A corridor divides this room, and on either side there are a half dozen more doors, " +
                     "presumambly behind which are the actual bunkrooms. The same red emergency lighting is in use here.");
-            setTwoOptions("Go back to hallway", "Check the nearest bunkroom");
+            setThreeOptions("Go back to hallway", "Check the nearest bunkroom", "Check Office");
         }
         
         public void bunkroom(){
@@ -494,11 +534,14 @@ public class GameGUI extends javax.swing.JFrame {
             setOneOption("Go back to the bunkhouse");
         }
         
-        public void showerRoom(){
-            setPrompt("The fitness and shower room looks untouched since whenever it was last used. Dumbbells line one of the walls, and a variety of nice exercise machines" +
-                    " are arranged in a neat pattern. A door marked showers is open, and you can see that it is a tiled room with a row of shower heads along one wall"+
-                    " and lockers on the other. This room is vacant and was well cared for.");
-            setOneOption("Go back to hallway");
+        public void waterRoom(){
+            setPrompt("Your PipBoy unlocks this room instantly. ");
+            setTwoOptions("Go back to hallway", "Climb up mini-ladder");
+        }
+        
+        public void upMiniLadder(){
+            setPrompt("Test");
+            setOneOption("Try to touch machinery.");
         }
         
         public void upStairsLanding(){
@@ -508,15 +551,49 @@ public class GameGUI extends javax.swing.JFrame {
         }
         
         public void maintenanceCloset(){
-            setPrompt("It's a small maintenance closet. A small tool box and cleaning supplies are scattered about on the floor. On the wall, surrounded by yellow"
-            + " signs with warnings such as 'Caution! High Voltage' is an open breaker box. Several breakers appear to have been ripped out and two wires are " 
-            + "arcing menacingly. The wire(and the air) crackles with possibilities.");
-            setTwoOptions("Go back", "Touch the wires!");
+            setPrompt("bunkhouse office");
+            setTwoOptions("Go back", "Inspect Terminal");
+        }
+        
+        public void closetComputerChoices(){
+            setPrompt("testing closet computer choices");
+            
+            setThreeOptions("'Message to Roy'", "'About Cordyceps'","Exit Terminal");
+        }
+        
+        public void closetComputerChoice1(){
+            setPrompt("....................../´¯/)\n"+
+                    "....................,/¯../\n"+
+                    ".................../..../\n"+
+                    "............./´¯/'...'/´¯¯`·¸\n"+
+                    "........../'/.../..../......./¨¯\\\n"+
+                    "........('(...´...´.... ¯~/'...')\n"+
+                    ".........\\.................'...../\n"+
+                    ".......''..\\................ _.·´\n"+
+                    "............\\..............(\n"+
+                    "..............\\.............\\ ");
+            
+            setOneOption("Back to Main choices");
+        }
+        
+        public void closetComputerChoice2(){
+            setPrompt("-MEDICINE JOURNAL- ::On The Cordyceps Virus::\n"+
+                    "'Toxoplasmosis', a");       
+            setOneOption("Continue Article");
+        }
+        
+        public void closetComputerChoice22(){
+            setPrompt("Cordyceps 2-2");
+            
+            setOneOption("Exit Article");
         }
         
         public void arcingWires(){
-            setPrompt("You grab hold and are electrocuted. You try to let go but cannot, the electricity forcing your hands to grasp the wires tighter. Images "
-            + "flash through your mind, mostly nonsensical. After several more seconds, you succumb to electrocution.");
+            setPrompt("Your hands slowly glide across the propeller blades, inching towards the black tuft. The mini-ladder wobbles slightly under you but the curiosity in your heart"+
+                    " burns to see what's there. You just feel the tip of the fuzzy object before your palm "+
+                    "suddenly brushes up against a small metal switch-\n"+
+                    "BRRRZRRRRRRTTTT\n"+
+                    "Before you can even react, the switch you flip turns the fan on and a vacuum obliterates your arm instantly. Your body drops into the tank and your vision darkens....");
             setOneOption("Game Over!");
         }
     }//end of vault rooms class
@@ -542,39 +619,33 @@ public class GameGUI extends javax.swing.JFrame {
                         switch (option) {
                             
                             case "Option1":
-                                firstHallway();
-                                passedPlayer.updatePosition("firstHallway");
+                                introTwo();
+                                passedPlayer.updatePosition("introTwo");
                                 break;
-                            
-                            case "Option2":
-                                firstDeadEndRoom();
-                                passedPlayer.updatePosition("firstDeadEnd");
-                                break;
-                            
-                            case "Option3":
-                                firstTerminalPartOne();
-                                passedPlayer.updatePosition("firstTerminalPartOne");
-                            break;
-                            
-                            case "Option4":
-                                if(passedPlayer.inquirePipBoy() == false){
-                                    inspectDeadBody();
-                                    passedPlayer.updatePosition("deadBody");
-                                }
-                                else{
-                                    inspectDeadBodyHasPipBoy();
-                                    passedPlayer.updatePosition("deadBodyEquipped");
-                                }
-                             break;                                                            
-                        }//end of internal switch statement for room "start"
+                        }//end of internal switch statement for room "intro"
+                    break;
+                    
+                    case "introTwo":
+                        switch(option){
+                            case "Option1":
+                                startCont();
+                                passedPlayer.updatePosition("startCont");
+                        }
                     break;
                     
                     case "startCont":
                         switch(option){
                             case "Option1":
-                                firstHallway();
-                                passedPlayer.updatePosition("firstHallway");                                
-                            break;
+                                if(passedPlayer.inquirePipBoy() == false) {
+                                    firstLockedDoor();
+                                    passedPlayer.updatePosition("firstLockedDoor");
+                                }
+                                else{
+                                    firstHallway();
+                                    passedPlayer.updatePosition("firstHallway");
+                                }
+                                break;
+                                
                             case "Option2":
                                 firstDeadEndRoom();
                                 passedPlayer.updatePosition("firstDeadEnd");                                
@@ -595,7 +666,16 @@ public class GameGUI extends javax.swing.JFrame {
                             break;
                         }//end of internal switch statement for startcont
                     break;
-                        
+ 
+                    case "firstLockedDoor":
+                        switch(option){
+                            
+                            case "Option1":
+                                startCont();
+                                passedPlayer.updatePosition("startCont");
+                            break;                               
+                            
+                        }
                     case "firstHallway":
                         switch (option){
                             
@@ -615,8 +695,8 @@ public class GameGUI extends javax.swing.JFrame {
                             break;
                             
                             case "Option4":
-                                showerRoom();
-                                passedPlayer.updatePosition("showerRoom");
+                                waterRoom();
+                                passedPlayer.updatePosition("waterRoom");
                             break;
                                 
                         }//end of internal switch statement for room "exampleCont"
@@ -682,13 +762,27 @@ public class GameGUI extends javax.swing.JFrame {
                         }//end of internal switch statement fcr room deadbodyequipped
                     break;
                     
-                    case "showerRoom":
+                    case "waterRoom":
                         switch(option){
                             case "Option1":
                                 firstHallway();
                                 passedPlayer.updatePosition("firstHallway");
                             break;
-                        }//end of internal switch statement for room showerroom
+                            
+                            case "Option2":
+                                upMiniLadder();
+                                passedPlayer.updatePosition("upMiniLadder");
+                            break;
+                        }
+                    break;
+                    
+                    case "upMiniLadder":
+                        switch(option){
+                            case "Option1":
+                                arcingWires();
+                                passedPlayer.updatePosition("arcingWires");
+                            break;
+                        }
                     break;
                     
                     case "bunkhouse":
@@ -701,6 +795,11 @@ public class GameGUI extends javax.swing.JFrame {
                             case "Option2":
                                 bunkroom();
                                 passedPlayer.updatePosition("bunkroom");
+                            break;
+                            
+                            case "Option3":
+                                maintenanceCloset();
+                                passedPlayer.updatePosition("maintenanceCloset");
                             break;
                         }//end of internal switch statement for room bunkhouse
                     break;
@@ -722,29 +821,70 @@ public class GameGUI extends javax.swing.JFrame {
                             break;
                             
                             case "Option2":
-                                maintenanceCloset();
-                                passedPlayer.updatePosition("maintenanceCloset");                                
-                            break;
-                            
-                            case "Option3":
                                 upStairsLanding();
                                 passedPlayer.updatePosition("upStairsLanding");
                             break;
                         }//end of room endofhalllanding nested switch statement
-                    break;
+                    break; 
                     
                     case "maintenanceCloset":
                         switch(option){
                             case "Option1":
-                                endOfHallDoor();
-                                passedPlayer.updatePosition("endOfHallDoor");
+                                bunkhouse();
+                                passedPlayer.updatePosition("bunkhouse");
                             break;
                             
                             case "Option2":
-                                arcingWires();
-                                passedPlayer.updatePosition("arcingWires");
+                                closetComputerChoices();
+                                passedPlayer.updatePosition("closetComputerChoices");
                             break;
                         }//end of room maintenance closet internal switch statement
+                    break;
+                    
+                    case "closetComputerChoices":
+                        switch(option){
+                            case "Option1":
+                                closetComputerChoice1();
+                                passedPlayer.updatePosition("closetComputerChoice1");
+                            break;
+                            
+                            case "Option2":
+                                closetComputerChoice2();
+                                passedPlayer.updatePosition("closetComputerChoice2");
+                            break;
+                            
+                            case "Option3":
+                                maintenanceCloset();
+                                passedPlayer.updatePosition("maintenanceCloset");
+                            break;
+                        }
+                    break; 
+                    
+                    case "closetComputerChoice1":
+                        switch(option){
+                            case "Option1":
+                                closetComputerChoices();
+                                passedPlayer.updatePosition("closetComputerChoices");
+                            break;
+                        }
+                    break;
+                    
+                    case "closetComputerChoice2":
+                        switch(option){
+                            case "Option1":
+                                closetComputerChoice22();
+                                passedPlayer.updatePosition("closetComputerChoice22");
+                            break;    
+                        }
+                    break;
+                    
+                    case "closetComputerChoice22":
+                        switch(option){
+                            case "Option 1":
+                                closetComputerChoices();
+                                passedPlayer.updatePosition("closetComputerChoices");
+                            break;
+                        }
                     break;
                     
                     case "arcingWires":
