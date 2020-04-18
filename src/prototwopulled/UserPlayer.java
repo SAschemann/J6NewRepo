@@ -10,6 +10,9 @@ public class UserPlayer {
     private String[] inventory = new String[0];
     private String position;
     private boolean hasPipBoy;
+    private boolean hasSecretOne;
+    private boolean hasSecretTwo;
+    private boolean hasSecretThree;
     
     public UserPlayer(){
         hp = 100;
@@ -17,6 +20,9 @@ public class UserPlayer {
         //this is going to need to be changed once the methods for the rooms are written
         position = "start";
         hasPipBoy = false;
+        hasSecretOne = false;
+        hasSecretTwo = false;
+        hasSecretThree = false;
     }
     
     public void setHP(int health){
@@ -57,6 +63,18 @@ public class UserPlayer {
         hasPipBoy = true;
     }
     
+    public void equipSecretOne(){
+        hasSecretOne = true;
+    }
+    
+    public void equipSecretTwo(){
+        hasSecretTwo = true;
+    }
+    
+    public void equipSecretThree(){
+        hasSecretThree = true;
+    }
+    
     public void updatePosition(String place){
         position = place;
     }
@@ -67,6 +85,18 @@ public class UserPlayer {
     
     public boolean inquirePipBoy(){
         return hasPipBoy;
+    }
+    
+    public boolean inquireSecretOne(){
+        return hasSecretOne;
+    }
+    
+    public boolean inquireSecretTwo(){
+        return hasSecretTwo;
+    }
+    
+    public boolean inquireSecretThree(){
+        return hasSecretThree;
     }
     
     public void setPip(boolean boy){

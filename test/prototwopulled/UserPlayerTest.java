@@ -109,6 +109,30 @@ public class UserPlayerTest {
         instance.updatePosition(place);
         assertEquals(instance.getPlayerPosition(),expectedResult);
     }
+    
+    @Test
+    public void testSecretOne(){
+        UserPlayer instance = new UserPlayer();
+        assertFalse(instance.inquireSecretOne());
+        instance.equipSecretOne();
+        assertTrue(instance.inquireSecretOne());
+    }
+    
+    @Test
+    public void testSecretTwo(){
+        UserPlayer instance = new UserPlayer();
+        assertFalse(instance.inquireSecretTwo());
+        instance.equipSecretTwo();
+        assertTrue(instance.inquireSecretTwo());
+    }
+    
+    @Test
+    public void testSecretThree(){
+        UserPlayer instance = new UserPlayer();
+        assertFalse(instance.inquireSecretThree());
+        instance.equipSecretThree();
+        assertTrue(instance.inquireSecretThree());
+    }
 
     
 }
