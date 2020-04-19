@@ -33,6 +33,7 @@ public class AudioPlayer{
     private String track; 
     private FloatControl gainControl;
     private boolean isPlaying;
+    private float gain;
 
  
     public AudioPlayer() throws UnsupportedAudioFileException, IOException,
@@ -230,6 +231,26 @@ public class AudioPlayer{
     public void volume(float decibles){
         if(this.clip != null)
             gainControl.setValue(decibles);
+    }
+    
+        public void VOLUP(){
+        if(this.clip != null && gain != 6.0){
+            gain = (gain + 2.0f);
+            gainControl.setValue(gain);
+        }
+    }
+    
+    public void VOLDOWN(){
+        if(this.clip != null && gain != -6.0){
+            gain = (gain - 2.0f);
+            gainControl.setValue(gain);
+        }
+    }
+    
+    public void RESET(){
+        if(this.clip != null)
+            gain = 0.0f;
+            gainControl.setValue(gain);
     }
     
     /**
