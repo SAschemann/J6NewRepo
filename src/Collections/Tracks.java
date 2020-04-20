@@ -12,7 +12,7 @@ package Collections;
 public enum Tracks {
        
     TRACK_ZERO(0, "Start Theme", "/music/Ev23.wav"),
-    TRACK_ONE(1,"Redo Start Theme","/music/workYet.wav"),
+    TRACK_ONE(1,"Background Music","/music/gameBGM.wav"),
     TRACK_TWO(2,"Death Grunt","/soundEffects/deathGrunt.wav"),
     TRAC_THREE(3,"Electricution","/soundEffects/electricution.mp3"),
     TRACK_FOUR(4,"Footsteps on pavement","/soundEffects/footStepsPavement.wav"),
